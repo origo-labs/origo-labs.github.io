@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Origo Labs’ current flagship research: Beyond Atomic Backpropagation, a working paper on decoupled sparse backpropagation." />
     <title>Origo Labs — Independent systems studio</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.css" /><link rel="stylesheet" href="/motion.css">
     <link rel="stylesheet" href="/home.css" />
+    <link rel="stylesheet" href="/atomic.css" />
+    <meta name="view-transition" content="same-origin" />
     <script type="module" src="/main.js" defer></script>
   </head>
   <body>
@@ -25,7 +27,7 @@
         <div class="hero-slides">
           <article class="hero-slide" id="hero-research" role="tabpanel" aria-labelledby="tab-research">
             <div class="eyebrow"><span class="pulse"></span> Current focus · Research · 2026</div>
-            <div class="hero-focus"><span class="hero-project">Beyond Atomic Backpropagation / Working paper</span><h1>Backpropagation<br /><em>is not atomic.</em></h1></div>
+            <div class="hero-focus atomic-focus"><span class="hero-project">Beyond Atomic Backpropagation / Working paper</span><div class="atomic-hero-figure" aria-hidden="true"><span class="atomic-track atomic-track--transport"></span><span class="atomic-track atomic-track--weight"></span><span class="atomic-node atomic-node--one"></span><span class="atomic-node atomic-node--two"></span><span class="atomic-node atomic-node--three"></span><span class="atomic-node atomic-node--four"></span></div><h1 class="atomic-title">Backpropagation<br /><em>is not atomic.</em></h1></div>
             <div class="hero-bottom"><p class="lede">Our current flagship research: 18.8% fewer weight-gradient evaluations at a +0.10% loss gap on a 34.58M-parameter pretraining benchmark.</p><a class="arrow-link" href="/research/beyond-atomic-backprop/">Read the working paper <span>↗</span></a></div>
           </article>
           <article class="hero-slide" id="hero-studio" role="tabpanel" aria-labelledby="tab-studio" hidden>
@@ -60,7 +62,7 @@
         <div class="project-grid">
           <article class="project-card accent-card"><div class="card-top"><span>02 / RELEASE</span><span class="status-dot">●</span></div><h3>Semble<span>-rs</span></h3><p>Fast, native code search for agents. Semantic retrieval, BM25, Tree-sitter chunking, and code-aware ranking in one Rust binary.</p><div class="project-meta"><span>Rust · Search</span><a href="/projects/semble-rs/">Read the project ↗</a></div></article>
           <article class="project-card"><div class="card-top"><span>03 / NEW</span><span class="status-dot">●</span></div><h3>GLiNER2<br /><span>· Candle</span></h3><p>A full-parity Rust/Candle implementation of GLiNER2 for fast, local entity extraction, classification, and structured understanding.</p><div class="project-meta"><span>Rust · ML · Local</span><a href="/projects/gliner2-candle/">Read the project ↗</a></div></article>
-          <article class="project-card"><div class="card-top"><span>04 / TOOLING</span><span class="status-dot muted">●</span></div><h3>rust<span>-okf</span></h3><p>An original Rust OKF engine and CLI. A distinctive line of investigation into compact, composable knowledge tooling.</p><div class="project-meta"><span>Rust · CLI</span><a href="https://github.com/mrorigo/rust-okf">Repository ↗</a></div></article>
+          <article class="project-card"><div class="card-top"><span>04 / NEW RELEASE</span><span class="status-dot">●</span></div><h3>Slop<br><span>Gate</span></h3><p>Deterministic CI review for Rust pull requests: complexity growth, near-clones, diagnostic suppression, unsafe surface, and dependency changes.</p><div class="project-meta"><span>Rust · CI · Review</span><a href="/projects/slop-gate/">Read the project ↗</a></div></article>
           <article class="project-card research-card"><div class="card-top"><span>05 / RESEARCH</span><span>↗</span></div><h3>BEAM—Claw</h3><p>Spatiotemporal composability on stock OTP primitives. A fresh research direction for agent runtimes and distributed systems.</p><div class="project-meta"><span>Erlang · Runtime</span><a href="/research/beam-claw/">Read the work ↗</a></div></article>
         </div>
       </section>

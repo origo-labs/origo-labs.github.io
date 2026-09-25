@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="A working paper on decoupled sparse backpropagation for neural-network pretraining.">
   <title>Beyond Atomic Backpropagation — Origo Labs</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/motion.css">
   <link rel="stylesheet" href="/page.css">
+  <link rel="stylesheet" href="/atomic.css">
+  <meta name="view-transition" content="same-origin">
+  <script type="module" src="/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -15,9 +18,10 @@
     <a class="header-contact" href="mailto:hello@origolabs.dev">Start a conversation <span>↗</span></a>
   </header>
   <main>
-    <section class="page-hero wrap">
+    <section class="page-hero wrap atomic-paper-hero">
       <span class="kicker">01 / Working paper · Training systems · Optimization</span>
-      <h1>Backpropagation<br><em>is not atomic.</em></h1>
+      <div class="atomic-paper-figure" aria-hidden="true"><span class="atomic-track atomic-track--transport"></span><span class="atomic-track atomic-track--weight"></span><span class="atomic-node atomic-node--one"></span><span class="atomic-node atomic-node--two"></span><span class="atomic-node atomic-node--three"></span><span class="atomic-node atomic-node--four"></span><span class="atomic-legend atomic-legend--transport">dX / continuous transport</span><span class="atomic-legend atomic-legend--weight">dW / selected evaluations</span></div>
+      <h1 class="atomic-title">Backpropagation<br><em>is not atomic.</em></h1>
       <p class="page-intro">A completed experimental study of decoupling activation-gradient transport from weight-gradient evaluation to reduce the cost of neural-network pretraining without breaking its gradient highway.</p>
     </section>
     <section class="wrap page-layout">

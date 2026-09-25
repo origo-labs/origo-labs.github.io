@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A working paper on decoupled sparse backpropagation for neural-network pretraining.">
+  <title>Beyond Atomic Backpropagation — Origo Labs</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/page.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="/"><span>origo</span><b>Labs</b></a>
+    <nav><a href="/projects/">Projects</a><a href="/research/">Research</a><a href="/studio/">Studio</a></nav>
+    <a class="header-contact" href="mailto:hello@origolabs.dev">Start a conversation <span>↗</span></a>
+  </header>
+  <main>
+    <section class="page-hero wrap">
+      <span class="kicker">01 / Working paper · Training systems · Optimization</span>
+      <h1>Backpropagation<br><em>is not atomic.</em></h1>
+      <p class="page-intro">A completed experimental study of decoupling activation-gradient transport from weight-gradient evaluation to reduce the cost of neural-network pretraining without breaking its gradient highway.</p>
+    </section>
+    <section class="wrap page-layout">
+      <aside class="side-meta">
+        <p>Status<br><strong>Working paper<br>Completed experiments</strong></p>
+        <p>Benchmark<br>16-layer Deep TinyGPT<br>34.58M parameters<br>1,000 pretraining steps</p>
+        <p>Environment<br>Apple Silicon · PyTorch 2.x · FP32</p>
+        <p>Patent<br><strong>Patent pending</strong></p>
+        <p>Paper<br><a href="mailto:hello@origolabs.dev?subject=Beyond%20Atomic%20Backpropagation%20paper">Available on request ↗</a></p>
+        <p>Topics<br>Training systems · Optimization · Distributed ML</p>
+      </aside>
+      <article class="article-copy">
+        <h2>Skipping a layer should not mean dropping its gradient transport.</h2>
+        <p>Transformer backpropagation performs two different calculations: the activation gradient that carries learning signals to earlier layers, and the weight gradient that updates a layer’s parameters. Prior selective-backpropagation approaches treat them as an indivisible block. Our experiments show that this can destabilize pretraining when layers rotate in and out of the backward pass.</p>
+        <h3>Decouple transport from parameter updates</h3>
+        <p>Decoupled Sparse Backpropagation preserves the activation-gradient path (<code>dX</code>) through every layer at every step. It selectively omits the more expensive parameter-gradient calculation (<code>dW</code>) on layers whose optimizer trajectory is sufficiently stable, using a proprietary method to handle skipped updates. The schedule uses non-adjacent, strided layer sets rather than contiguous frozen blocks.</p>
+        <pre>forward → exact dX transport → selective dW → optimizer update</pre>
+        <h3>What the completed benchmark measured</h3>
+        <p>On a 16-layer, 34.58M-parameter Deep TinyGPT model trained for 1,000 steps, the four-way strided schedule removed 18.8% of <code>dW</code> evaluations with a +0.10% final-loss gap against full backpropagation. A strided parity schedule removed 36.7% with a +0.34% gap. These are controlled benchmark results from the stated hardware, framework, model, and training run—not a general claim about all architectures or workloads.</p>
+        <h3>A proprietary update method</h3>
+        <p>The method for handling skipped parameter updates is proprietary. Its role is narrow: preserve stable training behavior while the activation-gradient path remains exact. The public result is the measured training outcome, not a disclosure of the update-prediction mechanism.</p>
+        <h3>What remains open</h3>
+        <p>The work establishes a mechanism and a measured small-model result. It does not yet establish equivalent quality or wall-clock gains for multi-billion-parameter training runs, other optimizers, other architectures, or every distributed stack. The 7B–70B communication figures in the working paper are network-traffic projections under stated assumptions, not completed large-scale experiments.</p>
+        <a class="arrow-link page-link" href="mailto:hello@origolabs.dev?subject=Beyond%20Atomic%20Backpropagation%20paper">Request the working paper <span>↗</span></a>
+      </article>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><a class="wordmark" href="/"><span>origo</span><b>Labs</b></a><span>Independent systems studio</span><a href="/research/">All research ↗</a></footer>
+</body>
+</html>

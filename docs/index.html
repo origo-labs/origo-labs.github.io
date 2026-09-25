@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Origo Labs’ current flagship research: Beyond Atomic Backpropagation, a working paper on decoupled sparse backpropagation." />
+    <title>Origo Labs — Independent systems studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/home.css" />
+    <script type="module" src="/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Origo Labs home"><span>origo</span><b>Labs</b></a>
+      <nav aria-label="Primary navigation">
+        <a href="/projects/">Projects</a>
+        <a href="/research/">Research</a>
+        <a href="/studio/">Studio</a>
+      </nav>
+      <a class="header-contact" href="mailto:hello@origolabs.dev">Start a conversation <span>↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero wrap feature-deck" aria-label="Featured work">
+        <div class="hero-slides">
+          <article class="hero-slide" id="hero-research" role="tabpanel" aria-labelledby="tab-research">
+            <div class="eyebrow"><span class="pulse"></span> Current focus · Research · 2026</div>
+            <div class="hero-focus"><span class="hero-project">Beyond Atomic Backpropagation / Working paper</span><h1>Backpropagation<br /><em>is not atomic.</em></h1></div>
+            <div class="hero-bottom"><p class="lede">Our current flagship research: 18.8% fewer weight-gradient evaluations at a +0.10% loss gap on a 34.58M-parameter pretraining benchmark.</p><a class="arrow-link" href="/research/beyond-atomic-backprop/">Read the working paper <span>↗</span></a></div>
+          </article>
+          <article class="hero-slide" id="hero-studio" role="tabpanel" aria-labelledby="tab-studio" hidden>
+            <div class="eyebrow"><span class="pulse"></span> Independent systems studio · 2026</div>
+            <div class="hero-focus"><span class="hero-project">Origo Labs / Studio thesis</span><h1>Making agentic software<br /><em>hold up in the real world.</em></h1></div>
+            <div class="hero-bottom"><p class="lede">Origo Labs builds the infrastructure, runtimes, and research that make AI systems more capable, observable, and useful.</p><a class="arrow-link" href="/studio/">Meet the studio <span>↗</span></a></div>
+          </article>
+          <article class="hero-slide" id="hero-warmplane" role="tabpanel" aria-labelledby="tab-warmplane" hidden>
+            <div class="eyebrow"><span class="pulse"></span> Flagship product · 2026</div>
+            <div class="hero-focus"><span class="hero-project">Warmplane / Local control plane</span><h1>Less context.<br /><em>More control.</em></h1></div>
+            <div class="hero-bottom"><p class="lede">A local control plane for deterministic, token-efficient MCP operations: compact discovery, observable calls, and less tool-schema overhead.</p><a class="arrow-link" href="/projects/warmplane/">Read the project <span>↗</span></a></div>
+          </article>
+        </div>
+        <div class="hero-controls" role="tablist" aria-label="Featured work">
+          <button id="tab-research" type="button" role="tab" aria-selected="true" aria-controls="hero-research" tabindex="0"><span>01</span> Research</button>
+          <button id="tab-studio" type="button" role="tab" aria-selected="false" aria-controls="hero-studio" tabindex="-1"><span>02</span> Studio</button>
+          <button id="tab-warmplane" type="button" role="tab" aria-selected="false" aria-controls="hero-warmplane" tabindex="-1"><span>03</span> Warmplane</button>
+        </div>
+      </section>
+
+      <section class="signal-strip" aria-label="Studio focus areas">
+        <div class="wrap signal-grid"><span>01 / LOCAL-FIRST</span><span>02 / AGENT INFRASTRUCTURE</span><span>03 / RELIABLE SYSTEMS</span><span>04 / APPLIED RESEARCH</span></div>
+      </section>
+
+      <section id="projects" class="section wrap" aria-labelledby="projects-title">
+        <div class="section-heading"><div><span class="kicker">Selected work</span><h2 id="projects-title">Built for the<br /><em>hard parts.</em></h2></div><p class="section-note">A small set of active and public systems. Some are products. Some are instruments for finding out what comes next.</p></div>
+        <div class="project-feature">
+          <div class="feature-label">01 <span>FLAGSHIP</span></div>
+          <div class="feature-copy"><h3>Warmplane</h3><p class="project-tagline">A local control plane for deterministic, token-efficient MCP operations.</p><p class="project-body">Keep capability discovery compact. Make tool calls observable. Let agents reach further without handing them a phone book.</p><div class="project-meta"><span>Rust · MCP · Runtime</span><a href="/projects/warmplane/">Read the project ↗</a></div></div>
+          <div class="feature-mark" aria-hidden="true"><span>W</span><i></i><i></i><i></i></div>
+        </div>
+        <div class="project-grid">
+          <article class="project-card accent-card"><div class="card-top"><span>02 / RELEASE</span><span class="status-dot">●</span></div><h3>Semble<span>-rs</span></h3><p>Fast, native code search for agents. Semantic retrieval, BM25, Tree-sitter chunking, and code-aware ranking in one Rust binary.</p><div class="project-meta"><span>Rust · Search</span><a href="/projects/semble-rs/">Read the project ↗</a></div></article>
+          <article class="project-card"><div class="card-top"><span>03 / NEW</span><span class="status-dot">●</span></div><h3>GLiNER2<br /><span>· Candle</span></h3><p>A full-parity Rust/Candle implementation of GLiNER2 for fast, local entity extraction, classification, and structured understanding.</p><div class="project-meta"><span>Rust · ML · Local</span><a href="/projects/gliner2-candle/">Read the project ↗</a></div></article>
+          <article class="project-card"><div class="card-top"><span>04 / TOOLING</span><span class="status-dot muted">●</span></div><h3>rust<span>-okf</span></h3><p>An original Rust OKF engine and CLI. A distinctive line of investigation into compact, composable knowledge tooling.</p><div class="project-meta"><span>Rust · CLI</span><a href="https://github.com/mrorigo/rust-okf">Repository ↗</a></div></article>
+          <article class="project-card research-card"><div class="card-top"><span>05 / RESEARCH</span><span>↗</span></div><h3>BEAM—Claw</h3><p>Spatiotemporal composability on stock OTP primitives. A fresh research direction for agent runtimes and distributed systems.</p><div class="project-meta"><span>Erlang · Runtime</span><a href="/research/beam-claw/">Read the work ↗</a></div></article>
+        </div>
+      </section>
+
+      <section id="research" class="section research-section" aria-labelledby="research-title"><div class="wrap"><div class="section-heading"><div><span class="kicker">Field notes</span><h2 id="research-title">Research with<br /><em>receipts.</em></h2></div><p class="section-note">Ideas become useful when they survive contact with implementation. These are working papers, ongoing investigations, and technical arguments from the lab.</p></div><div class="research-list"><a class="research-item" href="/research/beyond-atomic-backprop/"><span class="research-number">01</span><div><h3>Beyond Atomic Backpropagation</h3><p>18.8% fewer weight-gradient evaluations at a +0.10% loss gap on a 34.58M-parameter pretraining benchmark.</p></div><time datetime="2026-09">2026 / working paper</time><span>↗</span></a><a class="research-item" href="/research/beam-claw/"><span class="research-number">02</span><div><h3>BEAM—Claw</h3><p>A complete whitepaper and implementation study of self-evolving, reversible agent capabilities.</p></div><time datetime="2026-08">2026 / whitepaper</time><span>↗</span></a><a class="research-item" href="/research/system-1-thinking/"><span class="research-number">03</span><div><h3>System-1 is real. It just isn’t magic.</h3><p>A working paper on local, typed decisions: semantic interpretation separated from deterministic policy.</p></div><time datetime="2026-09">2026 / working paper</time><span>↗</span></a><a class="research-item" href="/research/warmplane-context-bloat/"><span class="research-number">04</span><div><h3>The End of Context Bloat</h3><p>Why capability discovery should be short, deliberate, and available on demand.</p></div><time datetime="2026-08">2026 / field note</time><span>↗</span></a></div></div></section>
+
+      <section id="studio" class="studio section wrap" aria-labelledby="studio-title"><div class="studio-index">ORIGO LABS<br />/ ABOUT</div><div><h2 id="studio-title">Small studio.<br /><em>Serious systems.</em></h2><p>Origo Labs is an independent studio run by <strong>mrorigo</strong>. We work where software engineering, machine learning, and agent design stop being separate disciplines.</p><p>For clients, that means senior technical thinking applied to ambiguous systems: architecture, prototypes, local-first AI, developer infrastructure, and the path from a compelling idea to something that can be trusted.</p><a class="arrow-link" href="/studio/">Meet the studio <span>↗</span></a></div></section>
+    </main>
+    <footer class="site-footer wrap"><a class="wordmark" href="#top"><span>origo</span><b>Labs</b></a><span>Independent systems studio · Stockholm / Everywhere</span><a href="https://github.com/mrorigo">GitHub ↗</a></footer>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Rulebound is a Rust supervisor for coding agents that runs project-declared quality contracts and escalates what deterministic gates cannot cover." />
+    <meta name="theme-color" content="#f3efe7" />
+    <title>Rulebound — Origo Labs</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/motion.css" />
+    <link rel="stylesheet" href="/page.css" />
+    <meta name="view-transition" content="same-origin" />
+    <script type="module" src="/main.js"></script>
+  </head>
+  <body class="project-detail" data-page="rulebound">
+    <header class="site-header wrap"><a class="wordmark" href="/"><span>origo</span><b>Labs</b></a><nav><a href="/projects/">Projects</a><a href="/research/">Research</a><a href="/studio/">Studio</a></nav><a class="header-contact" href="mailto:mrorigo+labs@gmail.com">Get in touch <span>↗</span></a></header>
+    <main>
+      <section class="page-hero wrap"><span class="kicker">05 / Beta · Rust · Agent infrastructure</span><h1>Rulebound<br /><em>make the quality bar executable.</em></h1><p class="page-intro">A supervisor for coding agents that runs a project's declared quality contract, reports when a gate could not run, and escalates the part software cannot express.</p></section>
+      <section class="wrap page-layout">
+        <aside class="side-meta"><p>Status<br><strong>Beta</strong></p><p>Repository<br><a href="https://github.com/origo-labs/rulebound">origo-labs / rulebound ↗</a></p><p>Created<br>2026-09-30</p><p>Last pushed<br>2026-09-30</p><p>Stack<br>Rust · TOML · Git · SARIF</p><p>Related<br><a href="/projects/slop-gate/">Slop Gate ↗</a></p><a class="arrow-link page-link" href="https://github.com/origo-labs/rulebound">View on GitHub <span>↗</span></a></aside>
+        <article class="article-copy">
+          <p class="eyebrow">The premise</p><h2>A rule in prose has no mechanism.</h2><p>Agents can make a change that is locally plausible and globally wrong. Rulebound gives a repository a place to declare its quality contract, then runs that contract around an agent's work. The result is an explicit verdict, not a vague green tick.</p>
+          <h3>Four outcomes, not one</h3><p>Every run ends in a state the workflow can handle: <strong>accept</strong> when the contract passes, <strong>block</strong> when a declared rule fails, <strong>error</strong> when a gate could not produce a trustworthy result, or <strong>escalate</strong> when the contract reaches a boundary that needs human judgment.</p><pre><code>contract → observe → gates → accept / block / error / escalate</code></pre>
+          <h3>Deterministic by default</h3><p>Rulebound runs locally, makes no network request during analysis, and keeps the gate loop free of a model. It can emit human, JSON, or SARIF findings for local review and CI. That makes the checks inspectable; it does not make them omniscient.</p>
+          <h3>The contract owns the boundary</h3><p>The useful feature is the explicit limit. A repository can declare checks for tests, formatting, clippy, diff shape, dependency policy, or a project-specific invariant. When a claim cannot be expressed as a deterministic gate, Rulebound records that gap instead of pretending it has been proved.</p>
+          <h3>Generalized from Slop Gate</h3><p><a href="/projects/slop-gate/">Slop Gate</a> reviews Rust pull requests for codebase-health changes such as function growth, near-clones, unsafe surface, and dependency expansion. Rulebound takes the same discipline and moves the contract to the project: the repository decides what “good” means, and the supervisor reports what happened.</p>
+          <h3>What is measured</h3><p>The current evidence covers 240 merges across nine repositories, with 29 graded states across two projects. In a small holdout set, deterministic gates caught all four seeded violations and stayed quiet on empty-diff states. The author also reports zero blocking-severity false positives in the merge corpus.</p><p class="callout">These are early, self-authored measurements. The evaluator wrote the gates and judged the findings; no independent validation has been performed.</p>
+          <h3>What remains open</h3><p>Rulebound is beta software. Ten of twelve gates currently run; <code>secret_absent</code> and <code>judged</code> report as unavailable rather than passing. Public API additions can be noisy, and <code>checks_green</code> has not been measured on large workspaces. The next work is broader fixtures, independent review, and clearer project-specific contracts.</p>
+          <div class="detail-cta"><p>Give an agent a quality bar it can actually run.</p><a class="arrow-link page-link" href="https://github.com/origo-labs/rulebound">Read the repository <span>↗</span></a></div>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer wrap"><a class="wordmark" href="/"><span>origo</span><b>Labs</b></a><span>Independent systems studio · Stockholm / Everywhere</span><a href="mailto:mrorigo+labs@gmail.com">mrorigo+labs@gmail.com</a></footer>
+  </body>
+</html>

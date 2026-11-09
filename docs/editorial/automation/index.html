@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="An Origo Labs analysis of out-of-the-loop deskilling, exception fatigue, and deterministic governance for agentic software workflows."><title>The Human-in-the-Loop Paradox — Origo Labs</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/motion.css"><link rel="stylesheet" href="/page.css"><link rel="stylesheet" href="/editorial.css"><meta name="view-transition" content="same-origin"></head>
+<body><header class="site-header"><a class="wordmark" href="/"><span>origo</span><b>Labs</b></a><nav><a href="/projects/">Projects</a><a href="/research/">Research</a><a href="/editorial/">Editorial</a><a href="/editorial/" aria-current="page">Editorial</a><a href="/studio/">Studio</a></nav><a class="header-contact" href="mailto:mrorigo+labs@gmail.com">Start a conversation <span>↗</span></a></header>
+<main><section class="page-hero wrap"><span class="kicker">01 / Published analysis · Agentic systems · Governance</span><h1><span class="blog-hero-title">The human-in-the-loop</span><br><em>paradox.</em></h1><p class="page-intro">Out-of-the-loop deskilling, exception fatigue, and deterministic governance for agentic systems.</p></section><section class="wrap page-layout"><aside class="side-meta"><p>Status<br><strong>Published · Analysis</strong></p><p>Author<br><strong>Origo Labs</strong></p><p>Topics<br>Automation · CI · Agent governance</p><p>Related products<br><a href="/projects/rulebound/">Rulebound portfolio page ↗</a><br><a href="https://origo-labs.github.io/rulebound/">Rulebound project site ↗</a><br><a href="/projects/slop-gate/">Slop Gate ↗</a></p></aside><article class="article-copy"><h2 id="out-of-the-loop-deskilling-exception-fatigue-and-deterministic-governance-for-agentic-systems">Out-of-the-loop deskilling, exception fatigue, and deterministic governance for agentic systems</h2>
+<p>Human-in-the-loop (HITL) oversight is often treated as a safety property by itself. Add a human approval step, and the system is assumed to become safer.</p>
+<p>That assumption is incomplete.</p>
+<p>When software automates routine work, people may see less of the system before they are asked to handle its hardest cases. The operator receives a late, ambiguous exception instead of a continuous stream of ordinary decisions. The result can be a cold-start takeover: reconstruct the state, interpret the trace, and choose an action under time pressure.</p>
+<p>This is the digital form of the problem described by Lisanne Bainbridge more than forty years ago, in her 1983 paper “Ironies of Automation.” The date matters. The current agentic-AI debate often presents out-of-the-loop failure as a new consequence of language models, but the underlying control problem was already legible in industrial automation in the early 1980s. Automation removes people from routine control while leaving them responsible for unusual failures. The person is still accountable, but no longer continuously embedded in the process.</p>
+<p>That does not make human oversight useless. It means that “there is a human in the loop” is not a sufficient design argument. Oversight needs a mechanism, useful context, and an explicit boundary around what the machine can and cannot decide.</p>
+<h2 id="the-exception-queue-is-a-different-job">The exception queue is a different job</h2>
+<p>Routine work builds operational knowledge. It gives people repeated exposure to normal states, common deviations, and the relationships between actions and outcomes. A highly automated workflow can remove that practice and leave a human queue containing mostly ambiguous, severe, or emotionally charged cases.</p>
+<p>The operator then has to do several jobs at once:</p>
+<ul>
+<li>reconstruct a long execution trace;</li>
+<li>decide whether the agent’s interpretation is correct;</li>
+<li>determine whether the requested action is safe;</li>
+<li>understand what has already changed;</li>
+<li>choose whether to continue, undo, or escalate again.</li>
+</ul>
+<p>The cost of this takeover grows with trace depth and context opacity, and falls with the time available to decide. That relationship is a design heuristic, not a validated universal law. It gives us a useful question: how much state does a human receive before being asked to take responsibility?</p>
+<h2 id="selective-escalation-is-a-measurable-capability">Selective escalation is a measurable capability</h2>
+<p>An agent should not ask a human about every uncertainty. It should also not guess through missing requirements or contradictory instructions.</p>
+<p><a href="https://arxiv.org/abs/2604.09408">HiL-Bench</a> treats this as a measurable capability. Its tasks contain blockers that surface as the agent explores the environment. The benchmark evaluates whether an agent asks a relevant question at the right time. Its Ask-F1 metric combines question precision and blocker recall, so indiscriminate question spam does not count as good escalation.</p>
+<p>The benchmark’s central finding is a judgment gap: models that perform well when complete information is supplied can lose much of that performance when they must decide whether to ask for help. The official <a href="https://labs.scale.com/leaderboard/hil">Scale benchmark page</a> describes the same distinction between execution capability and help-seeking judgment.</p>
+<p>This is a more precise claim than “agents cannot ask for help.” They can ask. The difficult part is selecting the cases where a question is necessary, making the question specific, and using the answer correctly.</p>
+<h2 id="human-intervention-depends-on-timing-and-context">Human intervention depends on timing and context</h2>
+<p>A randomized field experiment on Alibaba’s Taobao platform studied agentic customer-service workflows across 647 workers and 680,676 chats. The paper, <a href="https://arxiv.org/abs/2605.14830">Agentic AI and Human-in-the-Loop Interventions</a>, reports that intervention outcomes varied by escalation type and timing.</p>
+<p>Technical escalations, where the system reached a capability boundary, were more compatible with effective intervention. Emotional escalations, where frustration had accumulated before takeover, were harder for human workers to recover. The study also reports that earlier human intervention was more useful than waiting until the interaction had deteriorated.</p>
+<p>The result is not that human intervention always makes systems worse. It is that intervention is a workflow design variable. Timing, context, operator effort, and the type of failure all matter.</p>
+<h2 id="the-old-is-newor-was-it-ever-old">The old is new—or was it ever old?</h2>
+<p>The same pattern appears in our systems research. <a href="/research/beam-claw/">BEAM—Claw</a> starts from an older systems insight: dynamic change is safer when it is observable, reversible, and paired with an explicit inverse. Its Erlang/OTP runtime treats capability evolution as a supervised, hash-chained effect that can be unwound when a turn fails.</p>
+<p>BEAM—Claw is not a direct implementation of Bainbridge’s paper, and this is not a claim that one system proves the other. The connection is architectural. Both reject the idea that automation becomes safe merely because a human remains nominally available at the end of the process. The system must preserve enough state, evidence, and reversibility for intervention to be meaningful.</p>
+<p>That may be the more useful way to think about “old” ideas in agentic systems. They are not old because the problem has been solved. They are old because the problem keeps returning under new interfaces.</p>
+<h2 id="do-not-put-a-model-above-the-model-by-default">Do not put a model above the model by default</h2>
+<p>A common response to unreliable agent output is to add a second language model as a supervisor. That can be useful for open-ended review, but it does not automatically prove a constraint.</p>
+<p>A fluent explanation is not evidence that a numerical limit was checked, that a dependency was allowed, or that an action is reversible. A supervisory layer also needs to distinguish at least two different failures:</p>
+<ol type="1">
+<li>the change violated a rule;</li>
+<li>the check could not run or the contract could not be read.</li>
+</ol>
+<p>Those states have different operational meanings. Treating both as a binary failure makes the system harder to audit.</p>
+<h2 id="make-the-boundary-executable">Make the boundary executable</h2>
+<p>Our current governance work uses deterministic inspection for claims that can be made explicit in code.</p>
+<p><a href="https://github.com/mrorigo/slop-gate">Slop Gate</a> reviews Rust changes in repository context. It measures codebase-health signals such as function-mass growth, near-clones, diagnostic suppression, unsafe-surface growth, dependency surface, and structural erosion. It complements compiler and dependency checks; it does not replace them.</p>
+<p><a href="/projects/rulebound/">Rulebound</a> generalizes the idea into a project-declared quality contract for coding agents. Its separate <a href="https://origo-labs.github.io/rulebound/">project inspection site</a> presents the project’s own report and specification. The portfolio page and the project site have different roles: one is the canonical Origo Labs project record, and the other is the project’s detailed inspection surface.</p>
+<p>The useful distinction in Rulebound is the verdict model:</p>
+<pre class="text"><code>ACCEPT   every enabled gate ran and passed
+BLOCK    a declared rule produced an error-severity finding
+ERROR    no trustworthy verdict was reached
+ESCALATE a residual question needs human judgment</code></pre>
+<p>An unavailable check is not a passing check. A subjective design decision is not necessarily a failed deterministic rule. A governance system should expose those boundaries instead of compressing them into one green or red result.</p>
+<h2 id="a-practical-division-of-labour">A practical division of labour</h2>
+<p>For agentic workflows, we recommend four layers:</p>
+<ol type="1">
+<li><strong>Interpretation</strong> — a model converts unstructured input into a typed, inspectable proposal.</li>
+<li><strong>Deterministic policy</strong> — ordinary software checks thresholds, permissions, scope, reversibility, and idempotency.</li>
+<li><strong>Executable inspection</strong> — repository and workflow contracts check the properties that can be stated precisely.</li>
+<li><strong>Human judgment</strong> — people handle the residual questions that the contract intentionally does not claim to solve.</li>
+</ol>
+<p>This is not an argument for eliminating humans. It is an argument for spending human attention where automation cannot provide a trustworthy answer.</p>
+<h2 id="what-this-draft-does-not-claim">What this article does not claim</h2>
+<p>This essay does not establish that all human-in-the-loop systems are unsafe. It does not claim that deterministic rules can replace expert judgment. It does not make a general market-adoption estimate, interpret the EU AI Act, or present Rulebound or Slop Gate as independently validated safety systems.</p>
+<p>The evidence supports a narrower conclusion: oversight quality depends on the design of the escalation path, and machine-checkable boundaries should be implemented as executable contracts where possible.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Bainbridge, “Ironies of Automation” (1983, more than forty years before this draft): <a href="https://ckrybus.com/static/papers/Bainbridge_1983_Automatica.pdf">paper</a></li>
+<li>Elfeki et al., “HiL-Bench: Do Agents Know When to Ask for Help?” (2026): <a href="https://arxiv.org/abs/2604.09408">arXiv</a>, <a href="https://labs.scale.com/leaderboard/hil">Scale benchmark</a></li>
+<li>Wang et al., “Agentic AI and Human-in-the-Loop Interventions: Field Experimental Evidence from Alibaba’s Customer Service Operations” (2026): <a href="https://arxiv.org/abs/2605.14830">arXiv</a></li>
+<li><a href="https://github.com/mrorigo/slop-gate">Slop Gate repository</a></li>
+<li><a href="/projects/rulebound/">Rulebound portfolio page</a></li>
+<li><a href="https://origo-labs.github.io/rulebound/">Rulebound project inspection site</a></li>
+<li><a href="/research/beam-claw/">BEAM—Claw research page</a></li>
+</ul>
+<p class="editorial-evidence"><strong>Evidence note.</strong> This article uses the cited sources and identifies Origo Labs product pages as implementation references, not independent safety certifications.</p><a class="arrow-link page-link" href="/editorial/">Back to the blog <span>↗</span></a></article></section></main><footer class="site-footer wrap"><a class="wordmark" href="/"><span>origo</span><b>Labs</b></a><span>Independent systems studio</span><a href="/editorial/">All editorial ↗</a></footer></body></html>
